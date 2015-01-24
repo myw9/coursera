@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;CountInversionBrute&apos; to &apos;CountInversionsBrute&apos;&#x0D;&#x0A;- Original project: &apos;Week1&apos;&#x0D;&#x0A;- Original element: &apos;CountInversionBrute&apos;&#x0D;&#x0A;- Renamed element: &apos;CountInversionsBrute&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CountInversionBrute&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{CountInversionBrute.java[CountInversionBrute" matchStrategy="1" name="CountInversionsBrute" qualified="false" references="true" similarDeclarations="false" stamp="1422128686986" textual="false" version="1.0"/>
+</session>
