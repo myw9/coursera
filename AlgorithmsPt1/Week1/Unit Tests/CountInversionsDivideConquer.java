@@ -1,0 +1,53 @@
+import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class CountInversionsDivideConquer {
+
+	public ArrayList<TestInput> unitTestInputs;
+	
+	@Before
+	public void setUp() throws Exception {
+		// Initialize test input list
+		unitTestInputs = new ArrayList<TestInput>(50);
+		
+		// Iterate over all input files
+		File directory = new File("Inputs");
+		File[] inputFiles = directory.listFiles();
+		if (inputFiles != null)
+		{
+			// Iterate over each input file
+			for (File inputFile : inputFiles)
+			{
+				// Parse file to create test input objects	
+				String fileName = inputFile.getName();
+				if (fileName.startsWith("INPUT"))
+				{
+					String[] fileNameSplit = fileName.split("[_.]");
+					long numberInversions = Long.parseLong(fileNameSplit[1]);
+					
+					ArrayList<Integer> inputValues = CountInversions.ParseInputFile(inputFile.getPath());
+					
+					// Add test input
+					unitTestInputs.add(new TestInput(inputValues, numberInversions));
+				}
+			}
+		}
+	}
+
+	@Test
+	public void testCountInversionsDivideConquer() throws Exception {
+		for (TestInput testInput : unitTestInputs)
+		{
+			 InversionResult inversionResult = CountInversions.CountInversionsDivideConquer(testInput.inputValues);
+			 long computedNumberInversions = inversionResult.numberInversions;
+			 assertEquals("Number of Inversions must be: " + testInput.numberInversions, testInput.numberInversions, computedNumberInversions);
+		}
+	}
+
+}
