@@ -1,3 +1,4 @@
+package Coursera.AlgorithmsPt1.Week1;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
@@ -6,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+import Coursera.AlgorithmsPt1.Common.*;
 
 public class CountInversionsDivideConquer {
 
@@ -31,7 +33,7 @@ public class CountInversionsDivideConquer {
 					String[] fileNameSplit = fileName.split("[_.]");
 					long numberInversions = Long.parseLong(fileNameSplit[1]);
 					
-					ArrayList<Integer> inputValues = CountInversions.ParseInputFile(inputFile.getPath());
+					ArrayList<Integer> inputValues = Common.ParseInputFile(inputFile.getPath());
 					
 					// Add test input
 					unitTestInputs.add(new TestInput(inputValues, numberInversions));

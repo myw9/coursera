@@ -3,6 +3,7 @@
 	<name>Week1</name>
 	<comment></comment>
 	<projects>
+		<project>Common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

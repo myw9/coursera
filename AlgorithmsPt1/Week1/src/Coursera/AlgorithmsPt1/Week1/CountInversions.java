@@ -1,29 +1,11 @@
+package Coursera.AlgorithmsPt1.Week1;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class CountInversions
 {
-	// Parse input file and outputs an integer array
-	public static ArrayList<Integer> ParseInputFile(String filePath)
-			throws Exception
-	{
-		// Create file reader
-		FileReader fileReader = new FileReader(filePath);
-		;
-		BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-		// Reader file into array
-		ArrayList<Integer> inputValues = new ArrayList<Integer>(100000);
-		String currentLine = bufferedReader.readLine();
-		while (currentLine != null)
-		{
-			inputValues.add(Integer.parseInt(currentLine));
-			currentLine = bufferedReader.readLine();
-		}
-
-		return inputValues;
-	}
-	
 	// Count inversions using brute force n^2 approach
 	public static long CountInversionsBrute(ArrayList<Integer> inputData)
 			throws Exception
@@ -43,18 +25,19 @@ public class CountInversions
 
 		return numberInversions;
 	}
-	
+
 	// Count inversions using Divide and Conquer n*log(n) approach
-	public static InversionResult CountInversionsDivideConquer(ArrayList<Integer> inputData)
-	{	
+	public static InversionResult CountInversionsDivideConquer(
+			ArrayList<Integer> inputData)
+	{
 		// Check for base case (1 value)
 		if (inputData.size() == 1)
 		{
 			return new InversionResult(inputData, 0);
 		}
-		
+
 		// Split array in half: O(n)
-		int splitSize = inputData.size()/2; 
+		int splitSize = inputData.size() / 2;
 		ArrayList<Integer> leftValues = new ArrayList<Integer>(splitSize);
 		ArrayList<Integer> rightValues = new ArrayList<Integer>(splitSize);
 		for (int index = 0; index < inputData.size(); index++)
@@ -70,37 +53,49 @@ public class CountInversions
 				rightValues.add(inputData.get(index));
 			}
 		}
-		
+
 		// Recursive calls
 		InversionResult inversionResultLeft = CountInversionsDivideConquer(leftValues);
 		InversionResult inversionResultRight = CountInversionsDivideConquer(rightValues);
-		
+
 		// Merge/Sort + count split inversions
-		InversionResult inversionResultSplit = CountSplitInversionsDivideConquer(inversionResultLeft.sortedValues, inversionResultRight.sortedValues);
-		
+		InversionResult inversionResultSplit = CountSplitInversionsDivideConquer(
+				inversionResultLeft.sortedValues,
+				inversionResultRight.sortedValues);
+
 		// Calculate total number of inversions
-		long numberTotalInversions = inversionResultLeft.numberInversions + inversionResultRight.numberInversions + inversionResultSplit.numberInversions;
-		return new InversionResult(inversionResultSplit.sortedValues, numberTotalInversions);
+		long numberTotalInversions = inversionResultLeft.numberInversions
+				+ inversionResultRight.numberInversions
+				+ inversionResultSplit.numberInversions;
+		return new InversionResult(inversionResultSplit.sortedValues,
+				numberTotalInversions);
 	}
-	
+
 	// Merge sorted sub-arrays and count inversions
-	private static InversionResult CountSplitInversionsDivideConquer(ArrayList<Integer> sortedValuesLeft, ArrayList<Integer> sortedValuesRight)
+	private static InversionResult CountSplitInversionsDivideConquer(
+			ArrayList<Integer> sortedValuesLeft,
+			ArrayList<Integer> sortedValuesRight)
 	{
 		// Combine sorted values from left and right sides and count inversions
-		ArrayList<Integer> sortedValuesCombined = new ArrayList<Integer>(sortedValuesLeft.size() + sortedValuesRight.size());
+		ArrayList<Integer> sortedValuesCombined = new ArrayList<Integer>(
+				sortedValuesLeft.size() + sortedValuesRight.size());
 		long numberSplitInversions = 0;
-		
+
 		int indexLeft = 0;
 		int indexRight = 0;
-		while (indexLeft < sortedValuesLeft.size() || indexRight < sortedValuesRight.size())
+		while (indexLeft < sortedValuesLeft.size()
+				|| indexRight < sortedValuesRight.size())
 		{
 			// Compare both array listss
-			if (indexLeft < sortedValuesLeft.size() && indexRight < sortedValuesRight.size())
+			if (indexLeft < sortedValuesLeft.size()
+					&& indexRight < sortedValuesRight.size())
 			{
 				// Inversions exist
-				if (sortedValuesLeft.get(indexLeft) > sortedValuesRight.get(indexRight))
+				if (sortedValuesLeft.get(indexLeft) > sortedValuesRight
+						.get(indexRight))
 				{
-					numberSplitInversions += sortedValuesLeft.size() - indexLeft;
+					numberSplitInversions += sortedValuesLeft.size()
+							- indexLeft;
 					sortedValuesCombined.add(sortedValuesRight.get(indexRight));
 					indexRight++;
 				}
@@ -124,7 +119,7 @@ public class CountInversions
 				indexRight++;
 			}
 		}
-		
+
 		return new InversionResult(sortedValuesCombined, numberSplitInversions);
 	}
 }

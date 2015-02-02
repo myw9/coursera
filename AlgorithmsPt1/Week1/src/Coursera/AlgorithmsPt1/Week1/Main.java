@@ -1,4 +1,7 @@
+package Coursera.AlgorithmsPt1.Week1;
+
 import java.util.ArrayList;
+import Coursera.AlgorithmsPt1.Common.*;
 
 public class Main {
 
@@ -8,7 +11,7 @@ public class Main {
 		long numberInversions;
 		
 		// Parse input file
-		ArrayList<Integer> inputValues = CountInversions.ParseInputFile("Inputs\\IntegerArray.txt");
+		ArrayList<Integer> inputValues = Common.ParseInputFile("Inputs\\IntegerArray.txt");
 				
 		// Count inversions (Brute)
 		long runningTimeBrute;

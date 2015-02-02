@@ -1,3 +1,4 @@
+package Coursera.AlgorithmsPt1.Week1;
 import java.util.ArrayList;
 
 // Unit test input parameters

@@ -1,3 +1,5 @@
+package Coursera.AlgorithmsPt1.Week1;
+
 import java.util.ArrayList;
 
 public class InversionResult
