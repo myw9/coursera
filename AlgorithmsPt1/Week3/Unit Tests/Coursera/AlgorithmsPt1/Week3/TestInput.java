@@ -1,14 +1,14 @@
 package Coursera.AlgorithmsPt1.Week3;
 
-import Coursera.AlgorithmsPt1.Common.AdjacencyList;
+import Coursera.AlgorithmsPt1.Common.AdjacencyListUndirected;
 
 public class TestInput
 {
 	public int minCutValue;	
-	public AdjacencyList adjacencyList;
+	public AdjacencyListUndirected adjacencyList;
 	public String inputName;
 	
-	public TestInput(AdjacencyList adjacencyList, int minCutValue, String inputName)
+	public TestInput(AdjacencyListUndirected adjacencyList, int minCutValue, String inputName)
 	{
 		this.adjacencyList = adjacencyList;
 		this.minCutValue = minCutValue;

@@ -31,14 +31,14 @@ public class Common
 		return inputValues;
 	}
 
-	public static AdjacencyList ParseAdjacencyFile(String filePath) throws Exception
+	public static AdjacencyListUndirected ParseAdjacencyFileUndirected(String filePath) throws Exception
 	{
 		// Create file reader
 		FileReader fileReader = new FileReader(filePath);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 		// Create adjacency list from file
-		AdjacencyList adjacencyList = new AdjacencyList();
+		AdjacencyListUndirected adjacencyList = new AdjacencyListUndirected();
 		String currentLine = bufferedReader.readLine();
 		while (currentLine != null)
 		{
@@ -54,6 +54,42 @@ public class Common
 				for (int index = 1; index < splitLine.length; index++)
 				{
 					adjacencyList.AddEdge(vertex, Integer.parseInt(splitLine[index]));
+				}
+			}
+			
+			// Read next line
+			currentLine = bufferedReader.readLine();
+		}
+		
+		// Close file reader
+		bufferedReader.close();
+		
+		return adjacencyList;
+	}
+	
+	public static AdjacencyListDirected ParseAdjacencyFileDirected(String filePath) throws Exception
+	{
+		// Create file reader
+		FileReader fileReader = new FileReader(filePath);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+		// Create adjacency list from file
+		AdjacencyListDirected adjacencyList = new AdjacencyListDirected();
+		String currentLine = bufferedReader.readLine();
+		while (currentLine != null)
+		{
+			// Split data by white spaces
+			String[] splitLine = currentLine.split("[ \t]");
+			
+			if (splitLine.length > 1)
+			{
+				// Parse source vertex
+				int srcVertex = Integer.parseInt(splitLine[0]);
+				
+				// Create edges
+				for (int index = 1; index < splitLine.length; index++)
+				{
+					adjacencyList.AddEdge(srcVertex, Integer.parseInt(splitLine[index]));
 				}
 			}
 			

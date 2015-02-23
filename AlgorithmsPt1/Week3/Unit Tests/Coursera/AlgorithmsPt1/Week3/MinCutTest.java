@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import Coursera.AlgorithmsPt1.Common.AdjacencyList;
+import Coursera.AlgorithmsPt1.Common.AdjacencyListUndirected;
 import Coursera.AlgorithmsPt1.Common.Common;
 
 public class MinCutTest
@@ -26,7 +26,7 @@ public class MinCutTest
 			if (testFile.getName().startsWith("TestCase"))
 			{				
 				int minCutValue = Integer.parseInt(testFile.getName().split("[_.]")[1]);
-				AdjacencyList adjacencyList = Common.ParseAdjacencyFile(testFile.getAbsolutePath());
+				AdjacencyListUndirected adjacencyList = Common.ParseAdjacencyFileUndirected(testFile.getAbsolutePath());
 				testInputs.add(new TestInput(adjacencyList, minCutValue, testFile.getName()));
 			}
 		}

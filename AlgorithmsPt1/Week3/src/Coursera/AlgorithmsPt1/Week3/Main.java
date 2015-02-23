@@ -1,6 +1,6 @@
 package Coursera.AlgorithmsPt1.Week3;
 
-import Coursera.AlgorithmsPt1.Common.AdjacencyList;
+import Coursera.AlgorithmsPt1.Common.AdjacencyListUndirected;
 import Coursera.AlgorithmsPt1.Common.Common;
 
 public class Main
@@ -8,7 +8,7 @@ public class Main
 	public static void main(String[] args) throws Exception
 	{
 		System.out.print("Parsing Adjacency File...");
-		AdjacencyList adjacencyList = Common.ParseAdjacencyFile("Inputs\\kargerMinCut.txt");
+		AdjacencyListUndirected adjacencyList = Common.ParseAdjacencyFileUndirected("Inputs\\kargerMinCut.txt");
 		System.out.println("DONE");
 		
 		System.out.print("Finding Min Cut...");
