@@ -25,9 +25,15 @@ public class AdjacencyListDirected
 	
 	public void AddEdge(int srcVertexId, int destVertexId)
 	{
+		AddEdge(srcVertexId, destVertexId, 1);
+	}
+	
+	public void AddEdge(int srcVertexId, int destVertexId, int weight)
+	{
 		Vertex srcVertex = FindCreateVertex(srcVertexId);
 		Vertex destVertex = FindCreateVertex(destVertexId);
 		Edge edge = new Edge(srcVertex, destVertex);
+		edge.SetWeight(weight);
 		edges.add(edge);
 		srcVertex.edges.add(edge);
 	}
