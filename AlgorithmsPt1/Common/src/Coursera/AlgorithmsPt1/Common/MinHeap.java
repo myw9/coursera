@@ -11,6 +11,11 @@ public class MinHeap<T extends Comparable<T>>
 		count = 0;
 	}
 	
+	public T PeakMin()
+	{
+		return heapArray[0];
+	}
+	
 	public void Insert(T t)
 	{
 		// Insert at bottom of heap
@@ -252,6 +257,11 @@ public class MinHeap<T extends Comparable<T>>
 		{
 			return null;
 		}
+	}
+	
+	public int Size()
+	{
+		return count;
 	}
 	
 	@SuppressWarnings("unchecked")

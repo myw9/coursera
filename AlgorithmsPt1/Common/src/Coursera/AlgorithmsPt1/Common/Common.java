@@ -27,6 +27,28 @@ public class Common
 
 		return inputValues;
 	}
+	
+	// Parse input file and outputs an integer array
+	public static ArrayList<Long> ParseInputFileLarge(String filePath) throws Exception
+	{
+		// Create file reader
+		FileReader fileReader = new FileReader(filePath);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+		// Read file into array
+		ArrayList<Long> inputValues = new ArrayList<Long>(100000);
+		String currentLine = bufferedReader.readLine();
+		while (currentLine != null)
+		{
+			inputValues.add(Long.parseLong(currentLine));
+			currentLine = bufferedReader.readLine();
+		}
+
+		// Close file reader
+		bufferedReader.close();
+
+		return inputValues;
+	}
 
 	public static AdjacencyListUndirected ParseAdjacencyFileUndirected(String filePath) throws Exception
 	{
