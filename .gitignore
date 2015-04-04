@@ -1,7 +1,6 @@
 .metadata
 .recommenders
 .gradle
-.classpath
 bin/
 tmp/
 *.tmp
@@ -11,4 +10,3 @@ tmp/
 local.properties
 .settings/
 .loadpath
-.project
