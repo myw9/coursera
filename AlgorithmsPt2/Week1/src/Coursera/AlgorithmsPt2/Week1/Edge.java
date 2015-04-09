@@ -11,4 +11,19 @@ public class Edge {
 		this.endNode = endNode;
 		this.cost = cost;
 	}
+	
+	public Node getStartNode()
+	{
+		return startNode;
+	}
+	
+	public Node getEndNode()
+	{
+		return endNode;
+	}
+	
+	public int getCost()
+	{
+		return cost;
+	}
 }
