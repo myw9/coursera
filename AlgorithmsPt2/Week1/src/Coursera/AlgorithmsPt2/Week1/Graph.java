@@ -82,6 +82,18 @@ public class Graph {
 		return nodes;
 	}
 	
+	public Node getNode(int nodeId)
+	{
+		if (this.nodeMap.containsKey(nodeId))
+		{
+			return nodeMap.get(nodeId);
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
 	public ArrayList<Edge> mergeNodes(Node node1, Node node2)
 	{
 		// Check for null inputs

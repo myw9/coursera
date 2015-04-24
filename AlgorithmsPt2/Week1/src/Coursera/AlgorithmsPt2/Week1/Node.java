@@ -31,4 +31,14 @@ public class Node {
 	{
 		return edges.remove(edge);
 	}
+	
+	public ArrayList<Edge> getEdges()
+	{
+		return edges;
+	}
+	
+	public int getId()
+	{
+		return this.id;
+	}
 }
